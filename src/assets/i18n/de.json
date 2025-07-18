@@ -1,0 +1,37 @@
+{
+  "text_valor": "Depotwert",
+  "cartera": "Brieftasche",
+  "enviar": "Senden",
+  "recibir": "Empfangen",
+  "configuracion": "Einstellungen",
+  "cerrar_session": "Abmelden",
+
+  "modal_recibir": "Empfange die Einzahlung in deiner digitalen Brieftasche. Vergewissere dich, dass alle Details stimmen, bevor du bestätigst. Sobald die andere Person die Einzahlung getätigt hat, wird der Betrag in deinem Guthaben angezeigt.",
+  "titulo_selecciona_pais": "Land auswählen",
+
+  "titulo_saldo": "Mein ETH-Guthaben",
+  "red_conectada": "Verbundenes Netzwerk",
+  "conectado_correctamente": "Erfolgreich verbunden",
+  "activo": "Aktiv",
+  "btn_cambiar_red": "Netzwerk wechseln",
+  "seleccion_red_modal": "Netzwerk auswählen",
+  "guardar": "Speichern",
+  "cancelar": "Abbrechen",
+  "titulo_historial_trasacciones": "Transaktionsverlauf",
+
+  "para": "An",
+  "cantidad": "Menge",
+  "saldo": "Guthaben",
+  "siguiente": "Weiter",
+  "contactos": "Kontakte",
+
+  "realizar_transaccion": "Transaktion durchführen",
+  "mi_direccion": "Meine Adresse",
+
+  "text_nota1": "Diese Transaktion sendet ",
+  "text_nota2": " von deinem Konto an die Zieladresse. Bitte überprüfe die Angaben, bevor du fortfährst.",
+  "de": "Von",
+  "a": "An",
+  "valor": "Wert",
+  "detalle_transaccion": "Transaktionsdetails"
+}

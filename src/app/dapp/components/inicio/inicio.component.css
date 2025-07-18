@@ -1,0 +1,167 @@
+/* Fondo general con degradado */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.form-group label {
+  @apply block text-sm font-medium text-gray-700 mb-1;
+}
+
+.form-input {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm bg-white;
+}
+
+.btn-primary {
+  @apply w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 rounded-md shadow-sm transition duration-200;
+}
+
+.contenido {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to top right, #0f172a, #1e293b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor principal */
+.container {
+  background-color: white;
+  max-width: 420px;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  animation: fade-in 0.6s ease-out;
+}
+
+/* Encabezado */
+.texto_presentacion {
+  background: linear-gradient(to right, #2563eb, #4f46e5);
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem 1.2rem;
+}
+
+.titulo {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.text_titulo {
+  font-weight: 500;
+  color: #facc15; /* Amarillo Metaverso */
+}
+
+/* Botones de modo */
+button {
+  cursor: pointer;
+}
+
+.modo-selector button {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: none;
+  margin: 0 0.25rem;
+}
+
+.modo-selector .active {
+  background-color: #2563eb;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modo-selector .inactive {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+/* Formularios */
+form {
+  padding: 1rem 1.5rem;
+  animation: fade-in 0.3s ease;
+}
+
+form label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: #4b5563;
+}
+
+form input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-size: 0.875rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+form button[type="submit"] {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #2563eb;
+  color: white;
+  font-weight: 600;
+  border: none;
+  transition: background 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+form button[type="submit"]:hover {
+  background-color: #1d4ed8;
+}
+
+/* Botón Metamask */
+.btn_metamask {
+  margin-top: 1.2rem;
+  background-color: #fbbf24;
+  color: #111827;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  gap: 0.5rem;
+  border: none;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.btn_metamask:hover {
+  background-color: #f59e0b;
+}
+
+.imagen_icono_btn {
+  width: 24px;
+  height: 24px;
+}
+
+/* Animaciones */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

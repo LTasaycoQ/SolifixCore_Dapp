@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  mi-wallet:
+    image: luistasayco2004/wallet_metamask:v0.8
+    ports:
+      - "4200:4200" 
+  

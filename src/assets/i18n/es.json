@@ -1,0 +1,40 @@
+{
+  "text_valor": "Valor Cartera",
+  "cartera": "Cartera",
+  "enviar": "Enviar",
+  "recibir": "Recibir",
+  "configuracion":"Configuracion",
+  "cerrar_session": "Cerrar sesion",
+
+
+  "modal_recibir": "Recibe el depósito en tu billetera digital. Asegúrate de verificar los detalles antes de confirmar.Una vez que la otra persona haya realizado el depósito, el monto se reflejará en tu saldo.",
+  "titulo_selecciona_pais": "Seleccionar Pais",
+
+  
+  "titulo_saldo": "Mi saldo ETH",
+  "red_conectada": "Red conectada",
+  "conectado_correctamente": "Conectado correctamente",
+  "activo": "Activo",
+  "btn_cambiar_red": "Cambiar red",
+  "seleccion_red_modal": "Selecciona una Red",
+  "guardar": "Guardar",
+  "cancelar": "Cancelar",
+  "titulo_historial_trasacciones": "Historial de Transacciones",
+
+  "para": "Para",
+  "cantidad": "Cantidad",
+  "saldo": "Saldo",
+  "siguiente": "siguiente",
+  "contactos": "Contactos",
+
+  "realizar_transaccion": "Realizar Transacción",
+  "mi_direccion": "Mi Dirección",
+
+  "text_nota1": "Esta transacción está enviando ",
+  "text_nota2": " desde tu cuenta a la dirección de destino. Por favor, verifica la información antes de proceder.",
+  "de": "De",
+  "a": "A",
+  "valor": "Valor",
+  "detalle_transaccion": "Detalle de la transaccion"
+
+}

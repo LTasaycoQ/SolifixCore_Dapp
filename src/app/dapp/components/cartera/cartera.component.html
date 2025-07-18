@@ -1,0 +1,237 @@
+<div class="cuerpo_completo_contenedor">
+  <div class="flex flex-col md:flex-row gap-6 w-full max-w-screen-xl mx-auto px-4">
+
+    <!-- Tarjeta de saldo -->
+    <div class="tajerta_saldo rounded-lg shadow p-6  w-full md:w-2/3">
+      <div class="contiene_todo">
+        <div class="todo_detalle">
+          <div class="flex items-center gap-10">
+            <div class="hidden md:block  icono_saldo"></div>
+            <div class="contenido_seccion_saldo ">
+              <div class="flex gap-2 items-center ">
+                <h2 class="titulo_seccion_saldo text-white">{{ traducciones?.titulo_saldo }}</h2>
+
+                <div class="block md:hidden w-6 h-6 icono_sald2"></div>
+
+              </div>
+              <p class="balance_eth text-white"> {{ balance }} <span class="text-blue-600 font-bold">ETH</span></p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="detalle_inferior">
+          <p class="text-gray-600 text-white"><span class="valor_actual_eth">{{ direccion }}</span></p>
+          <a routerLink="/enviar" routerLinkActive="activo"> <button class="btn_enviar">{{
+              traducciones?.enviar}}</button></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta de red -->
+    <div class="w-full md:w-1/3 bg-white rounded-xl shadow-md p-6 border border-gray-200 space-y-5">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-semibold text-gray-800">
+          {{ traducciones?.red_conectada }}
+        </h2>
+        <span class="text-sm px-3 py-1 rounded-full bg-lime-300 text-green-700 font-medium">
+          {{traducciones?.activo}}
+        </span>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <div class="general_color_blue p-2 rounded-lg ">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 16 16">
+            <path
+              d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9z" />
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-base font-medium text-blue-700">{{ red }}</p>
+          <p class="text-sm text-lime-900">{{ traducciones?.conectado_correctamente }}</p>
+        </div>
+      </div>
+
+      <div class=" general_color_blue w-full rounded-lg flex items-center justify-center ">
+
+
+        <button (click)="openModalRed()" class="text-base text-white font-bold mt-2 mb-2 w-full">
+          {{traducciones?.btn_cambiar_red}}
+        </button>
+      </div>
+      <!-- <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+    <p class="text-sm text-gray-600 leading-relaxed">
+      Estás operando en la red <span class="font-semibold">{{ red }}</span>. Verifica que sea la red correcta antes de continuar
+      con tus transacciones.
+    </p>
+  </div> -->
+    </div>
+
+
+  </div>
+
+  <br>
+
+  <div class="flex flex-col md:flex-row gap-6 w-full max-w-screen-xl mx-auto px-4">
+
+    <div class="bg-white rounded-lg shadow p-6 md:flex-[1] w-full">
+      <h2 class="text-2xl font-bold mb-4 text-gray-700">{{ traducciones?.titulo_historial_trasacciones }}</h2>
+
+      <div class="text-sm font-bold mb-2 px-2 hidden md:flex justify-between text-gray-600 place-content-center">
+        <div class="w-[10%] truncate">Hash</div>
+        <div class="w-[10%] truncate">Bloque</div>
+        <div class="w-[10%]">Hace</div>
+        <div class="w-[10%]">Txn fee</div>
+        <div class="w-[15%] truncate">De</div>
+        <div class="w-[15%] truncate">Para</div>
+        <div class="w-[15%] truncate">Método</div>
+        <div class="w-[10%] truncate">Cantidad</div>
+      </div>
+
+      <!-- Lista de transacciones -->
+      <div *ngFor="let transacciones of response"
+        class="bg-gray-50 border border-gray-200 rounded-lg mb-4 p-4 hover:shadow-sm transition-shadow duration-300 place-content-center">
+
+        <div class="flex flex-col md:flex-row gap-2 md:gap-4 text-sm text-gray-800 justify-between items-center">
+
+          <!-- Hash -->
+          <div class="w-full md:w-[10%] truncate">{{ shorteHash(transacciones.hash) }}</div>
+
+          <!-- Bloque -->
+          <div class="w-full md:w-[10%]">
+            <span class="inline-block bg-blue-900 text-white text-xs px-3 py-1 rounded-lg">
+              {{ transacciones.blockNumber }}
+            </span>
+          </div>
+
+          <div class="w-full md:w-[10%] hidden md:block">
+            {{ obtenerDiaHoraTransaccion(transacciones.timeStamp) }}
+          </div>
+
+         <div class="invisible md:visible bg-blue-50 rounded-lg border border-blue-100  shadow-sm  max-w-xs">
+            <span class="text-gray font-semibold text-sm tracking-wide m-3">
+              {{ gasGastado(transacciones.gas, transacciones.gasPrice) }}
+            </span>
+          </div>
+          
+          <div class="w-full md:w-[15%] hidden md:block truncate">{{ shorteHash(transacciones.from) }}</div>
+
+          <!-- Para -->
+          <div class="w-full md:w-[15%] hidden md:block truncate flex items-center gap-1">
+            {{ shorteHash(transacciones.to) }}
+            <span *ngIf="mensaje" class="bg-lime-300 text-xs font-semibold px-2 py-0.5 rounded-lg">Contrato</span>
+          </div>
+
+          <!-- Método -->
+          <div class="w-full md:w-[15%] hidden md:block">
+            <span
+              class="bg-teal-300 text-xs font-medium px-3 py-1 rounded-lg inline-block text-ellipsis overflow-hidden whitespace-nowrap max-w-full">
+              {{ separaFuncion(transacciones.functionName) }}
+            </span>
+          </div>
+
+          <div class="w-full md:w-[10%] hidden md:block truncate">
+            {{ transformarValor(transacciones.value) }}
+          </div>
+
+          
+         
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div id="mymodalRed" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 ">
+
+  <div class="relative w-full max-w-md mx-auto p-6 bg-white rounded-xl shadow-2xl">
+    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">{{ traducciones?.seleccion_red_modal }}</h2>
+
+    <div class="space-y-3">
+      <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+        <input type="radio" name="red" [(ngModel)]="conectarRed" value="0x1" class="accent-green-600">
+        <img src="https://cdn.worldvectorlogo.com/logos/ethereum-eth.svg" alt="Ethereum" class="h-5 w-5">
+        <span class="text-sm font-medium text-gray-700">Ethereum Mainnet</span>
+      </label>
+
+      <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+        <input type="radio" name="red" [(ngModel)]="conectarRed" value="0x259c741" class="accent-green-600">
+        <img src="https://metaschool.so/_next/static/media/unknown-logo.7eda54b1.webp" alt="Ephemery" class="h-5 w-5">
+        <span class="text-sm font-medium text-gray-700">Ephemery Testnet</span>
+      </label>
+
+      <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+        <input type="radio" name="red" [(ngModel)]="conectarRed" value="0x4268" class="accent-green-600">
+        <img src="https://cdn-icons-png.flaticon.com/512/3097/3097026.png" alt="Holesky" class="h-5 w-5">
+        <span class="text-sm font-medium text-gray-700">Ethereum Holesky</span>
+      </label>
+
+      <label class="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:bg-gray-100 transition">
+        <input type="radio" name="red" [(ngModel)]="conectarRed" value="0xaa36a7" class="accent-green-600">
+        <img src="https://cdn-icons-png.flaticon.com/512/9000/9000078.png" alt="Sepolia" class="h-5 w-5">
+        <span class="text-sm font-medium text-gray-700">Sepolia</span>
+      </label>
+    </div>
+
+    <div class="mt-6 flex justify-end gap-3">
+
+
+      <button (click)="closeModalRed()"
+        class="px-4 py-2 border border-gray-300 text-sm font-semibold rounded-md text-gray-700 hover:bg-gray-100 transition">
+        {{traducciones?.cancelar}}
+      </button>
+
+      <button (click)="cambiarRed()"
+        class="px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-md hover:bg-green-500 transition">
+        {{traducciones?.guardar}}
+
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div id="mymodalDetalle" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm">
+  <div class="relative w-full max-w-md mx-auto p-6 bg-white rounded-xl shadow-2xl">
+    <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">
+      Detalle transascione
+    </h2>
+
+    <div class="text-sm text-gray-700 space-y-2">
+      <div><strong>Block #:</strong> ejemplo va block</div>
+      <div><strong>Timestamp:</strong> ejemplo va block</div>
+      <div><strong>Hash:</strong> <span class="break-all">ejemplo va block</span></div>
+      <div><strong>De:</strong> <span class="break-all">ejemplo va block</span></div>
+      <div><strong>Para:</strong> <span class="break-all">ejemplo va block</span></div>
+      <div><strong>Valor:</strong>ejemplo va block</div>
+      <div><strong>Gas usado:</strong>ejemplo va block</div>
+      <div><strong>Gas price:</strong> ejemplo va block</div>
+      <div><strong>Nonce:</strong>ejemplo va block</div>
+      <div><strong>Confirmaciones:</strong> ejemplo va block</div>
+      <div><strong>Status:</strong> ejemplo va block</div>
+    </div>
+
+    <div class="mt-6 flex justify-end gap-3">
+      <button (click)="closeModalDetalle()"
+        class="px-4 py-2 border border-gray-300 text-sm font-semibold rounded-md text-gray-700 hover:bg-gray-100 transition">
+        {{ traducciones?.cancelar }}
+      </button>
+    </div>
+  </div>
+</div>

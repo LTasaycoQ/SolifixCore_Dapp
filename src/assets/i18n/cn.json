@@ -1,0 +1,37 @@
+{
+  "text_valor": "钱包价值",
+  "cartera": "钱包",
+  "enviar": "发送",
+  "recibir": "接收",
+  "configuracion": "设置",
+  "cerrar_session": "登出",
+
+  "modal_recibir": "在您的数字钱包中接收存款。请确保在确认前核对所有信息。一旦对方完成存款，金额将显示在您的余额中。",
+  "titulo_selecciona_pais": "选择国家",
+
+  "titulo_saldo": "我的 ETH 余额",
+  "red_conectada": "已连接的网络",
+  "conectado_correctamente": "连接成功",
+  "activo": "活跃",
+  "btn_cambiar_red": "更换网络",
+  "seleccion_red_modal": "选择网络",
+  "guardar": "保存",
+  "cancelar": "取消",
+  "titulo_historial_trasacciones": "交易记录",
+
+  "para": "接收方",
+  "cantidad": "数量",
+  "saldo": "余额",
+  "siguiente": "下一步",
+  "contactos": "联系人",
+
+  "realizar_transaccion": "执行交易",
+  "mi_direccion": "我的地址",
+
+  "text_nota1": "本次交易将发送 ",
+  "text_nota2": " 从您的账户发送到目标地址。请在继续之前确认所有信息。",
+  "de": "从",
+  "a": "到",
+  "valor": "金额",
+  "detalle_transaccion": "交易详情"
+}

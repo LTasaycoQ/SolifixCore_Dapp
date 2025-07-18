@@ -1,0 +1,354 @@
+<div class=" contenerdor_enviar flex flex-col md:flex-row gap-6 w-full max-w-screen-xl mx-auto px-4">
+
+  <div class="enviar bg-white rounded-lg shadow p-6 md:flex-[1] w-1/2">
+
+    <div class="flex justify-between items-center">
+      <h3 class="text-2xl font-semibold text-white">{{traducciones?.enviar}}</h3>
+      <p class="text-sm font-semibold text-green-600">{{traducciones?.saldo}}: {{ balance }} ETH</p>
+    </div>
+
+    <br>
+
+    <div class="form-container">
+      <div class="mb-5">
+        <label class="block mb-2 text-lg font-semibold text-white">Tipo de transacción</label>
+        <select [(ngModel)]="tipoTransaccion"
+          class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5">
+          <option value="normal">Normal</option>
+          <option value="contrato">Contrato</option>
+        </select>
+      </div>
+
+      <div class="mb-5">
+        <label for="to" class="block mb-2 text-lg font-semibold text-white">{{traducciones?.para}}</label>
+        <input #inputDireccion type="text" id="to" [(ngModel)]="toAddress"
+          class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5" required />
+      </div>
+
+      <div class="mb-5">
+        <label for="amount" class="block mb-2 text-lg font-semibold text-white">{{traducciones?.cantidad}}</label>
+        <input type="text" id="amount" [(ngModel)]="amount"
+          class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2.5" required />
+      </div>
+      <br>
+      <button (click)="validarCampos()" [ngClass]="tipoTransaccion === 'normal' ? 'bg-amber-600' : 'bg-green-500'"
+        class="w-full text-white font-bold text-sm rounded-lg p-2">
+        {{ tipoTransaccion === 'normal' ? 'Envio Normal' : 'Enviar por Contrato' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-lg shadow p-6 w-1/2 ">
+
+    <div class=" flex justify-between items-center mb-2">
+      <p class="text-2xl font-bold text-blue-600">{{traducciones?.contactos}}</p>
+      <button *ngIf="response.length > 0" class="btn_contactos_am" (click)="openModalContactosRegistrar()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus"
+          viewBox="0 0 16 16">
+          <path
+            d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+          <path fill-rule="evenodd"
+            d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
+        </svg>
+      </button>
+    </div>
+    <div *ngIf="response.length > 0" class="w-full">
+
+      <div class="lista_contactos_max  overflow-y-auto divide-y divide-gray-200">
+        <div *ngFor="let contacto of response"
+          class="flex items-center justify-between px-5 py-3 hover:bg-gray-50 transition">
+
+          <div class="flex items-center gap-3">
+            <div class="icon_contactos">
+            </div>
+            <div class="text-sm">
+              <div class="font-semibold text-gray-800 text-lg">{{ contacto.apodo }}</div>
+              <div class="text-gray-500 break-all text-xs">{{ shortenAddress(contacto.direccion_eth) }}</div>
+            </div>
+          </div>
+
+          <button class="text-blue-600 hover:text-blue-800 transition"
+            (click)="obtenerDireccionContac(contacto.direccion_eth)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-send-fill"
+              viewBox="0 0 16 16">
+              <path
+                d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div *ngIf="hayContactos" class=" w-full justify-center items-center">
+
+      <div class="flex flex-col justify-center gap-2 items-center mt-9">
+
+        <span class="text-2xl font-semibold text-gray-600 ">{{ statusList }}</span>
+        <button (click)="openModalContactosRegistrar()"
+          class="bg-blue-700 font-medium text-white border-4 rounded-lg mt-4 p-2">
+          <span class=" font-medium  text-xl ">Registrar</span>
+        </button>
+      </div>
+    </div>
+
+
+    <div *ngIf="hayError" class=" w-full justify-center items-center">
+
+      <div class="flex flex-col justify-center gap-2 items-center mt-9">
+
+        <span class="text-2xl font-semibold text-gray-600 ">{{ statusContact }}</span>
+        <button (click)="openModalUsario()" class="bg-blue-700 font-medium text-white border-4 rounded-lg mt-4 p-2">
+          <span class=" font-medium  text-xl ">Crear una Cuenta</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+</div>
+
+
+<div class="m-4">
+
+
+  <div class="mt-2  border-green-400 bg-green-200  rounded-lg  flex justify-between items-center">
+    <div class="p-4 text-lg  font-normal flex gap-3">
+      <p class="text-blue-600  font-bold">Hash: </p>
+      <span>{{ statusMessage }}</span>
+    </div>
+
+    <a class="mr-5" href="https://{{ nombreRed }}.etherscan.io/tx/{{ statusMessage }}" target="_blank">abrir</a>
+  </div>
+</div>
+
+
+<!-- Modal para contactos -->
+<div id="myModalContactosRegistrar" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 ">
+  <div class="w-full max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+    <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center bg-gray-100">
+      <h2 class="text-xl font-semibold text-gray-800">Registrar Contacto</h2>
+      <button (click)="closeModalContactosRegistrar()"
+        class="text-gray-400 hover:text-red-500 text-2xl">&times;</button>
+    </div>
+
+    <form (submit)="registrarContacto($event)" class="px-6 py-5 space-y-4 bg-white">
+      <div>
+        <label for="apodo" class="block text-sm font-medium text-gray-700">Apodo</label>
+        <input type="text" name="apodo" id="apodo" required
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-sm" />
+      </div>
+
+      <div>
+        <label for="direccion" class="block text-sm font-medium text-gray-700">Dirección ETH</label>
+        <input type="text" name="direccion" id="direccion" required
+          class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-sm" />
+      </div>
+
+      <div class="flex justify-end gap-3">
+        <button type="submit"
+          class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-sm font-medium">
+          Agregar
+        </button>
+        <button (click)="closeModalContactosRegistrar()"
+          class="text-sm px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition">
+          Cerrar
+        </button>
+      </div>
+
+
+
+    </form>
+
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+<div id="myModalContactos" class="fixed inset-0 z-50 hidden items-center justify-center bg-gray-900/60">
+  <div class="w-full max-w-md mx-auto bg-white rounded-md shadow-xl overflow-hidden">
+    <div class="px-5 py-4 border-b border-gray-200 flex justify-between items-center">
+      <h2 class="text-xl font-bold text-gray-800">Lista de Contactos</h2>
+      <button (click)="closeModalContactos()"
+        class="text-gray-500 hover:text-red-600 transition text-xl">&times;</button>
+    </div>
+
+
+
+
+    <ng-template #sinContactos>
+      <div class="text-center text-gray-500 text-sm py-6">No tienes contactos registrados.</div>
+    </ng-template>
+
+    <div *ngIf="statusContact" class="grid justify-center">
+
+      <span class="text-xl justify-center font-medium mb-4">{{ statusContact }}</span>
+      <br>
+      <a routerLink="/">Cerrar sesión</a>
+    </div>
+
+    <div class="px-5 py-3 border-t border-gray-200 text-right">
+      <button (click)="closeModalContactos()"
+        class="text-sm px-3 py-1 bg-gray-700 text-white rounded hover:bg-gray-800 transition">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="myModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 ">
+  <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="fixed inset-0 bg-black/65 transition-opacity" aria-hidden="true"></div>
+
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+        <div
+          class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+          <!-- Modal content -->
+          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="sm:flex sm:items-start">
+              <div class="w-full">
+                <h3 class="text-2xl font-bold text-gray-20" id="modal-title">{{traducciones?.realizar_transaccion}}</h3>
+                <div class="mt-7">
+
+                  <div class="items-center gap-4 bg-green-200 rounded-xl border-4 border-green-300">
+                    <div class="m-4 flex gap-6 items-center ">
+                      <div class="icon_user_predefinido"></div>
+                      <div>
+                        <p class="text-lg font-bold text-gray-800">{{traducciones?.mi_direccion}}</p>
+                        <p class="text-sm font-semibold">{{ userAddress }}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p class="text-sm font-semibold text-gray-800 mt-3 mb-3"> {{traducciones?.text_nota1}} {{ amount }}
+                    ETH
+                    {{traducciones?.text_nota2}}</p>
+
+
+                  <div class="flex items-center justify-between w-full gap-4">
+                    <div class="flex items-center justify-center bg-gray-200 border-4 border-gray-300 rounded-lg p-4">
+                      <div class="flex items-center gap-4">
+                        <div class="icono_crypto w-10 h-10 bg-gray-400 rounded-full"></div>
+                        <div>
+                          <p class="font-bold text-sm text-gray-800">{{traducciones?.cantidad}}</p>
+                          <p class="text-xs font-medium text-gray-900"> {{ amount }} ETH</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex items-center justify-center px-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
+                        class="bi bi-arrow-right text-gray-600" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                          d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                      </svg>
+                    </div>
+
+                    <div
+                      class="flex items-center justify-center bg-gray-200 border-4 border-gray-300 rounded-lg p-4 max-w-xs w-1/3">
+                      <div class="flex items-center gap-4 w-full overflow-hidden">
+                        <div class="icono_receptor w-10 h-10 bg-gray-400 rounded-full shrink-0"></div>
+                        <div class="w-full overflow-hidden">
+                          <p class="font-bold text-sm text-gray-800">{{traducciones?.para}}</p>
+                          <p
+                            class="text-xs font-medium text-gray-900 truncate overflow-hidden whitespace-nowrap w-full">
+                            {{ toAddress }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="w-full border-b border-slate-200">
+            <button (click)="toggleAccordion()"
+              class="w-full flex justify-between items-center py-5 text-slate-800 bg-gray-300  border-4 rounded-lg">
+              <span class="text-gray-700 font-medium text-lg ml-5">{{traducciones?.detalle_transaccion}}</span>
+              <span class="text-slate-800 transition-transform duration-300 mr-5"
+                [ngClass]="{ 'rotate-45': isAccordionOpen }">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                  <path
+                    d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                </svg>
+              </span>
+            </button>
+
+            <div class="overflow-hidden transition-all duration-300 ease-in-out"
+              [ngClass]="{ 'max-h-0': !isAccordionOpen, 'max-h-40': isAccordionOpen }">
+              <div class="pb-5 text-sm text-slate-500">
+
+                <div class="w-full">
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <table class="min-w-full text-sm text-gray-700">
+                      <tbody>
+                        <tr class="border-b">
+                          <td class="p-2 font-semibold">{{traducciones?.de}}:</td>
+                          <td class="p-2 text-gray-800 font-normal">{{ userAddress }}</td>
+                        </tr>
+                        <tr class="border-b">
+                          <td class="p-2 font-semibold">{{traducciones?.a}}:</td>
+                          <td class="p-2 text-gray-800 font-normal"> {{ toAddress }}</td>
+                        </tr>
+                        <tr class="border-b">
+                          <td class="p-2 font-semibold">{{traducciones?.cantidad}}:</td>
+                          <td class="p-2 text-gray-800 font-normal"> {{ amount }} </td>
+                        </tr>
+                        <tr class="border-b">
+                          <td class="p-2 font-semibold">{{traducciones?.valor}}:</td>
+                          <td class="p-2 text-gray-800 font-normal"> $ {{ valor_dollares }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 justify-center gap-10">
+            <button type="button" (click)="enviarETH()"
+              class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-green-900 sm:ml-3 sm:w-auto">
+
+
+              {{traducciones?.realizar_transaccion}}</button>
+            <button type="button" (click)="closeModal()"
+              class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto">{{traducciones?.cancelar}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

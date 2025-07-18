@@ -1,0 +1,37 @@
+{
+  "text_valor": "Portfolio Value",
+  "cartera": "Wallet",
+  "enviar": "Send",
+  "recibir": "Receive",
+  "configuracion": "Settings",
+  "cerrar_session": "Log Out",
+
+  "modal_recibir": "Receive the deposit in your digital wallet. Be sure to verify the details before confirming. Once the other person has made the deposit, the amount will be reflected in your balance.",
+  "titulo_selecciona_pais": "Select Country",
+
+  "titulo_saldo": "My ETH Balance",
+  "red_conectada": "Connected Network",
+  "conectado_correctamente": "Connected Successfully",
+  "activo": "Active",
+  "btn_cambiar_red": "Change Network",
+  "seleccion_red_modal": "Select a Network",
+  "guardar": "Save",
+  "cancelar": "Cancel",
+  "titulo_historial_trasacciones": "Transaction History",
+
+  "para": "To",
+  "cantidad": "Amount",
+  "saldo": "Balance",
+  "siguiente": "Next",
+  "contactos": "Contacts",
+
+  "realizar_transaccion": "Make Transaction",
+  "mi_direccion": "My Address",
+
+  "text_nota1": "This transaction is sending ",
+  "text_nota2": " from your account to the destination address. Please verify the information before proceeding.",
+  "de": "From",
+  "a": "To",
+  "valor": "Value",
+  "detalle_transaccion": "Transaction Details"
+}

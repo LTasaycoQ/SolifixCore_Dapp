@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.contenerdor_enviar {
+    font-family: 'Nunito';
+}
+
+#myModal {
+    font-family: 'Nunito';
+
+}
+
+.contenerdor_historial {
+    font-family: 'Nunito';
+}
+
+.icon_user_predefinido {
+    background: url("https://wallpapers.com/images/featured/fondos-de-diseno-de-fondo-6tgpche84avnjqvz.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.icono_crypto {
+
+
+    background: url("https://assets.iproup.com/assets/jpg/2020/12/14705.jpg?6.3.1");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    border-radius: 12.5px;
+}
+
+
+.icono_receptor {
+
+
+    background: url("https://i.pinimg.com/474x/c0/fc/fc/c0fcfc03661951b1a8a1b0dd1521060c.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    border-radius: 12.5px;
+}
+
+.enviar {
+
+    background-color: #16202C;
+}
+
+.btn_siguiente {
+    background-color: #ff8800;
+}
+
+.icon_contactos {
+    background: url("https://static.vecteezy.com/system/resources/previews/002/072/763/non_2x/colorful-abstract-background-free-vector.jpg"), no-repeat;
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+    border-radius: 24px;
+}
+
+#myModalContactosRegistrar {
+    font-family: 'Nunito';
+}
+
+.lista_contactos_max{
+    height: 400px;
+}
+
+.btn_contactos_am {
+    width: 60px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #16202C;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    color: white;
+
+}
+
+#myModalContactos {
+    font-family: 'Nunito';
+}

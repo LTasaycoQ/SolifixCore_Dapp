@@ -1,0 +1,107 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.titulo_seccion_saldo {
+    font-size: 30px;
+
+}
+
+.text_title_transacciones div{
+    color: #1a5aa8;
+
+}
+#mymodalRed{
+    font-family: 'Nunito';
+}
+.general_color_blue{
+    background-color: #16202C;
+}
+
+.cuerpo_completo_contenedor{
+    font-family: 'Nunito';
+    
+}
+.icono_saldo {
+    background: url("https://static-00.iconduck.com/assets.00/generic-cryptocurrency-icon-2048x2048-8uz1hlry.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 65px;
+    height: 65px;
+}
+
+
+.icono_sald2 {
+    background: url("https://static-00.iconduck.com/assets.00/generic-cryptocurrency-icon-2048x2048-8uz1hlry.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.balance_eth {
+    font-weight: 400;
+    margin-top: 8px;
+    font-size: 20px;
+    width: 100%;
+}
+
+
+.todo_detalle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+}
+
+.contiene_todo {
+    padding-left: 14px;
+    padding-right: 16px;
+
+}
+
+.detalle_inferior {
+    margin-bottom: 5px;
+    margin-top: 37px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+        font-weight: 600;
+
+    }
+
+    ;
+.valor_actual_eth{
+    color: rgb(0, 255, 234);
+    font-weight: bold;
+}
+    .btn_enviar {
+        background-color: #ffa600;
+        color: white;
+        font-weight: 600;
+        width: 120px;
+        height: 35px;
+        font-size: 20px;
+        text-align: center;
+        align-items: center;
+        border-radius: 10px;
+        margin-right: 10px;
+
+    }
+}
+
+.advertencia {
+    text-align: center;
+    margin-left: 60px;
+    font-weight: 600;
+}
+
+
+
+
+.tajerta_saldo{
+    background-color: #16202C;
+}

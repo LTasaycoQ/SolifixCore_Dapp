@@ -1,0 +1,44 @@
+{
+  "text_valor": "ポートフォリオの価値",
+  "cartera": "ブリーフケース",
+  "enviar": "送る",
+  "recibir": "受け取る",
+  "configuracion":"構成",
+  "cerrar_session": "ログアウト",
+
+
+  "modal_recibir": "デジタルウォレットで入金を受け取ります。確認する前に必ず詳細を確認してください。相手が入金すると、その金額があなたの残高に反映されます。",
+  "titulo_selecciona_pais": "国を選択してください",
+
+  
+  "titulo_saldo": "私のETH残高",
+  "red_conectada": "現在のネットワーク",
+  "conectado_correctamente": "正しく接続されました",
+  "activo": "資産",
+  "btn_cambiar_red": "ネットワークを変更する",
+  "seleccion_red_modal": "赤いものを選択してください",
+  "guardar": "保つ",
+  "cancelar": "キャンセル",
+  "titulo_historial_trasacciones": "取引履歴",
+
+
+  "para": "のために",
+  "cantidad": "額",
+  "saldo": "バランス",
+  "siguiente": "続く",
+  "contactos": "連絡先",
+
+  "realizar_transaccion": "トランザクションの実行",
+  "mi_direccion": "私の住所",
+
+  "text_nota1": "このトランザクションは送信中です",
+  "text_nota2": " あなたのアカウントから送信先アドレスへ送金されます。続行する前に情報を確認してください。",
+  "de": "の",
+  "a": "に",
+  "valor": "価値",
+  "detalle_transaccion": "取引詳細"
+
+
+
+
+}
